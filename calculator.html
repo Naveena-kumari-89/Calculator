@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+    background-image: url('https://w0.peakpx.com/wallpaper/114/272/HD-wallpaper-background-aqua-blue-colors-gradient.jpg');
+    background-size: cover;
+}
+table{
+    background-color: aqua;
+    border: 3px solid black;
+    width:19.6%
+}
+button{
+    background-color: aqua;
+    align-self: center;
+    border: none;
+    font-size: 20px;
+    width:70px;
+    height:50px;
+}
+td,button{
+    background-color: aqua;
+}
+#res{
+    width: 297px;
+    height: 35px;
+    border: 3px solid black;
+}
+td:hover{
+    background-color: rgb(4, 134, 186);
+}
+button:hover{
+    background-color: rgb(4, 134, 186);
+}
+
+
+</style>
+<body><center>
+    <h2>CALCULATOR</h2>
+    <div>
+    <input type="text" id="res" size="35" >
+    <table border="2" width="15%">
+        <tr>
+            <td><button onclick="appendNumber(9)">9</button></td>
+            <td><button onclick="appendNumber(8)">8</button></td>
+            <td><button onclick="appendNumber(7)">7</button></td>
+            <td><button onclick="operator('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="appendNumber(4)">4</button></td>
+            <td><button onclick="appendNumber(5)">5</button></td>
+            <td><button onclick="appendNumber(6)">6</button></td>
+            <td><button onclick="operator('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="appendNumber(3)">3</button></td>
+            <td><button onclick="appendNumber(2)">2</button></td>
+            <td><button onclick="appendNumber(1)">1</button></td>
+            <td><button onclick="operator('*')">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="appendNumber(0)">0</button></td>
+            <td><button onclick="clearRes('c')">c</button></td>
+            <td><button onclick="calc('=')">=</button></td>
+            <td><button onclick="operator('/')">/</button></td>
+        </tr>
+    </table>
+</div>
+</center>
+</body>
+<script>
+    let fNum="";
+let sNum="";
+let op="";
+function appendNumber(num){
+    if(op==""){
+        fNum+=num;
+        document.getElementById("res").value=fNum;
+    }
+    else{
+        sNum+=num;
+        document.getElementById("res").value=fNum+""+op+""+sNum;
+    }
+}
+function operator(oper){
+    op=oper;
+    document.getElementById("res").value=fNum+""+op;
+}
+function calc(){
+    let r;
+    switch(op){
+        case '+':
+            r=parseInt(fNum)+parseInt(sNum);
+            break;
+        case '-':
+            r=parseInt(fNum)-parseInt(sNum);
+            break;
+        case '*':
+            r=parseInt(fNum)*parseInt(sNum);
+            break;
+        case '/':
+            r=parseInt(fNum)/parseInt(sNum);
+            break;
+                    
+    }
+    document.getElementById("res").value=r;
+}
+function clearRes(){
+    fNum="";
+    sNum="";
+    op="";
+    document.getElementById("res").value="";
+}
+</script>
+</html>
